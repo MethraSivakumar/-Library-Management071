@@ -1,0 +1,55 @@
+managed implementation in class ZZCIBP_R_CIT_DB_071071 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZZCIR_CIT_DB_071071 alias ZzcirCitDb071071
+persistent table ZCIT_DB_071
+extensible
+draft table ZZCICT_DB_0_D071
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+{
+  field ( mandatory : create )
+   Bookid;
+
+  field ( readonly )
+   Localcreatedby,
+   Localcreatedat,
+   Locallastchangedby,
+   Locallastchangedat,
+   Lastchangedat;
+
+  field ( readonly : update )
+   Bookid;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZCIT_DB_071 corresponding extensible
+  {
+    Bookid = BOOKID;
+    Title = TITLE;
+    Author = AUTHOR;
+    Category = CATEGORY;
+    Rackno = RACKNO;
+    Publishedyear = PUBLISHEDYEAR;
+    Issuedate = ISSUEDATE;
+    Language = LANGUAGE;
+    Price = PRICE;
+    Localcreatedby = LOCALCREATEDBY;
+    Localcreatedat = LOCALCREATEDAT;
+    Locallastchangedby = LOCALLASTCHANGEDBY;
+    Locallastchangedat = LOCALLASTCHANGEDAT;
+    Lastchangedat = LASTCHANGEDAT;
+  }
+
+}
